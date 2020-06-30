@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import test_framework.BasePage;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class WebBasePage extends BasePage {
@@ -54,4 +55,30 @@ public class WebBasePage extends BasePage {
 
     }
 
+    @Override
+    public void action(HashMap<String, Object> map) {
+        super.action(map);
+        if(map.get("action").toString().toLowerCase().equals("get")){
+            driver.get(map.get("url").toString());
+        }else {
+            System.out.println("出问题了！");
+        }
+    }
+    @Override
+    public void click(HashMap<String, Object> map) {
+        super.click(map);
+        String key = (String) map.keySet().toArray()[0];
+        String value = (String) map.values().toArray()[0];
+        By by = null;
+        if (key.toLowerCase().equals("id") ) {
+            by = By.id(value);
+        }
+        if (key.toLowerCase().equals("linkText".toLowerCase())) {
+            by = By.linkText(value);
+        }
+        if (key.toLowerCase().equals("partialLinkText".toLowerCase())) {
+            by = By.partialLinkText(value);
+        }
+        click(by);
+    }
 }

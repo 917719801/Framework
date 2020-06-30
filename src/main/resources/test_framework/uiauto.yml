@@ -2,6 +2,13 @@ name: xxx
 deseription: xxx
 steps:
   - id: locator
+  - get: https://ceshiren.com
+  - id: search
+    sendkeys: "jjjjjj"
+  - click: {id: search}
+  - id: search
+    action: getText
+    key: search_text
 
   #基本自动化领域模型
   #业务模型
@@ -25,13 +32,6 @@ steps:
   #    text: "jjjjjj"
   #  - id: search
   #    click: null
-  - id: search
-    sendkeys: "jjjjjj"
-  - click: {id: search}
-  - id: search
-    action: getText
-    key: search_text
-
 #  - action: click
 #    id: search
 #    until: xxx
