@@ -1,13 +1,38 @@
 name: xxx
 deseription: xxx
 steps:
-#基本自动化领域模型
-#业务模型
-  - method: click
-    params: [1, 2]
-  - action: click
-    by: id
-    locator: search
-  - action: click
-    id: click
-  - click: { id: search }
+  - id: locator
+
+  #基本自动化领域模型
+  #业务模型
+  #通用方法
+  #  - method: click
+  #    params: [1, 2]
+  ##通用方法加参数
+  #  - action: click
+  #    params:
+  #    by: id
+  #    value: search
+  ##简化格式
+  #  - by: id
+  #    value: search
+  #    action: click
+  ##进一步简化
+  #  - id: search
+  #    action: click
+  #  - id: search
+  #    action: sendkeys
+  #    text: "jjjjjj"
+  #  - id: search
+  #    click: null
+  - id: search
+    sendkeys: "jjjjjj"
+  - click: {id: search}
+  - id: search
+    action: getText
+    key: search_text
+
+#  - action: click
+#    id: search
+#    until: xxx
+#  - click: { id: search }
